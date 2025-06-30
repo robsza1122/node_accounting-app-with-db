@@ -5,7 +5,7 @@ const { sequelize } = require('../db.js');
 
 const Expense = sequelize.define('Expense', {
   userId: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.INTEGER,
   },
   spentAt: {
     type: DataTypes.DATE,
@@ -13,11 +13,11 @@ const Expense = sequelize.define('Expense', {
     allowNull: false,
   },
   title: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   amount: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.FLOAT,
   },
 
   note: {

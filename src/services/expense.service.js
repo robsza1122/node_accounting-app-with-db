@@ -12,9 +12,9 @@ const getAllExpense = async (filtersArg = {}) => {
 
   if (filtersArg.categories) {
     filters.category = {
-      [Op.in]: Array.isArray(filters.category)
-        ? filters.category
-        : [filters.category],
+      [Op.in]: Array.isArray(filtersArg.categories)
+        ? filtersArg.categories
+        : [filtersArg.categories],
     };
   }
 
