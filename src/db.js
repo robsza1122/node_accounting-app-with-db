@@ -20,7 +20,7 @@ const {
   replace if needed with your own
 */
 
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = new Sequelize({
   database: POSTGRES_DB || 'postgres',
   username: POSTGRES_USER || 'postgres',
   host: POSTGRES_HOST || 'localhost',

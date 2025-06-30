@@ -19,7 +19,7 @@ const createUser = async (name) => {
 };
 
 const updateUser = async (name, id) => {
-  const [updatedUser] = await User.update(
+  const [, [updatedUser]] = await User.update(
     { name },
     { where: { id }, returning: true },
   );

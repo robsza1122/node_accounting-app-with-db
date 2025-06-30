@@ -18,9 +18,11 @@ const getUsersById = async (req, res) => {
 
   if (!user) {
     res.status(404).send('User not found');
+
+    return;
   }
 
-  res.status(201).send(user);
+  res.status(200).send(user);
 };
 
 const createUser = async (req, res) => {
@@ -28,6 +30,8 @@ const createUser = async (req, res) => {
 
   if (!name) {
     res.status(422).send('Please type your username');
+
+    return;
   }
 
   const user = await createNewUser(name);
@@ -38,27 +42,33 @@ const createUser = async (req, res) => {
 const removeUser = async (req, res) => {
   const { id } = req.params;
 
-  const user = deleteUser(+id);
+  const user = await deleteUser(+id);
 
   if (!user) {
     res.status(404).send('User not found!');
+
+    return;
   }
 
   res.status(200).send({ message: 'User removed!' });
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
 
   if (!name) {
     res.status(422).send('Please type your username');
+
+    return;
   }
 
-  const user = updateUserById(name, id);
+  const user = await updateUserById(name, id);
 
   if (!user) {
     res.status(404).send('User not found!');
+
+    return;
   }
 
   res.status(200).send(user);

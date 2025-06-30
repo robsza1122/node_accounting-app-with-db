@@ -12,9 +12,9 @@ const getAllExpense = async (filtersArg = {}) => {
 
   if (filtersArg.categories) {
     filters.category = {
-      [Op.in]: Array.isArray(filters.categories)
-        ? filters.categories
-        : [filters.categories],
+      [Op.in]: Array.isArray(filters.category)
+        ? filters.category
+        : [filters.category],
     };
   }
 
@@ -36,12 +36,12 @@ const getExpenseById = async (id) => {
 };
 
 const removeExpense = async (id) => {
-  return Expense.destroy({ where: id });
+  return Expense.destroy({ where: { id } });
 };
 
 const updateExpense = async ({ id, updateObj }) => {
   const [, [updatedExpense]] = await Expense.update(updateObj, {
-    where: id,
+    where: { id },
     returning: true,
   });
 

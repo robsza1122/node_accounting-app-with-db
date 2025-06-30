@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', expensesController.getAllExpense);
 router.post('/', expensesController.createExpense);
-router.get(':id', expensesController.getExpenseById);
+router.get('/:id', expensesController.getExpenseById);
 router.patch('/:id', expensesController.updateExpense);
 router.delete('/:id', expensesController.removeExpense);
 

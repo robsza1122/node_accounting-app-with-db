@@ -31,6 +31,8 @@ const getExpenseById = async (req, res) => {
 
   if (!expense) {
     res.status(404).send('Expense not found');
+
+    return;
   }
 
   res.status(200).send(expense);
@@ -78,7 +80,7 @@ const removeExpense = async (req, res) => {
 
   await expensesServices.removeExpense(+id);
 
-  res.status(204).send('Expense removed successfully');
+  res.status(200).send('Expense removed successfully');
 };
 
 const updateExpense = async (req, res) => {
